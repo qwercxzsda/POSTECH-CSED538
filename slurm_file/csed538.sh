@@ -22,6 +22,10 @@ srun -I /bin/hostname
 srun -I /bin/pwd
 srun -I /bin/date
 
+module purge
+module load cuda/11.3
+module load slurm/21.08.4
+
 echo "source $HOME/anaconda3/etc/profile.d/conda.sh"
 source $HOME/anaconda3/etc/profile.d/conda.sh   # add conda to PATH
 
