@@ -21,8 +21,9 @@ echo "PROJECT_DIR=$PROJECT_DIR"
 echo "conda activate ddpm-cd"
 conda activate ddpm-cd
 
+echo "start training"
 # python ddpm_train.py --config config/levir.json -enable_wandb -log_eval
-python ddpm_train.py --config config/levir.json -log_eval
+python $PROJECT_DIR/ddpm_train.py --config $PROJECT_DIR/config/levir.json -log_eval
 
 echo "conda deactivate"
 conda deactivate
