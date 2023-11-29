@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=csed538_job      # 작업 이름 설정
 
-#SBATCH --time=00:30:00             # 작업 실행 시간 설정 (시:분:초)
+##SBATCH --time=00:30:00             # 작업 실행 시간 설정 (시:분:초)
 #SBATCH --output=csed538.%j.out     # 작업 실행 결과 출력 파일명 설정
 #SBATCH --error=csed538.%j.err      # 작업 실행 에러 출력 파일명 설정
 
