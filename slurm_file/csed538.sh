@@ -24,6 +24,8 @@ srun -I /bin/date
 
 module purge
 module load cuda/11.3
+module load nccl/cuda/11.3/2.9.6
+module load cuDNN/cuda/11.3/8.2.0.53
 module load slurm/21.08.4
 
 echo "source $HOME/anaconda3/etc/profile.d/conda.sh"
