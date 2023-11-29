@@ -1,12 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=csed538_job     # 작업 이름 설정
-#SBATCH --nodes=1                  # 노드 수 설정
-#SBATCH --tasks-per-node=1         # 각 노드 당 작업 수 설정
-#SBATCH --cpus-per-task=4          # 각 작업에 할당된 CPU 코어 수 설정
-#SBATCH --mem=4G                   # 각 작업에 할당된 메모리 설정
-#SBATCH --time=00:30:00            # 작업 실행 시간 설정 (시:분:초)
-#SBATCH --output=csed538_job.out   # 작업 실행 결과 출력 파일명 설정
-#SBATCH --error=csed538_job.err    # 작업 실행 에러 출력 파일명 설정
+#SBATCH --job-name=csed538_job      # 작업 이름 설정
+
+#SBATCH --time=00:30:00             # 작업 실행 시간 설정 (시:분:초)
+#SBATCH --output=csed538.%j.out     # 작업 실행 결과 출력 파일명 설정
+#SBATCH --error=csed538.%j.err      # 작업 실행 에러 출력 파일명 설정
+
+#SBATCH -p titanxp                  # queue name or partition
+#SBATCH --gres=gpu:2                # gpus per node
+
+#SBATCH --nodes=1                   # 노드 수 설정
+#SBATCH --tasks-per-node=1          # 각 노드 당 작업 수 설정
+#SBATCH --cpus-per-task=4           # 각 작업에 할당된 CPU 코어 수 설정
 
 # Docker 실행 명령어
 # srun docker run --rm -it your_docker_image your_command
