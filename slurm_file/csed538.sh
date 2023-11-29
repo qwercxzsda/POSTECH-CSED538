@@ -12,15 +12,18 @@
 #SBATCH --tasks-per-node=1          # 각 노드 당 작업 수 설정
 #SBATCH --cpus-per-task=4           # 각 작업에 할당된 CPU 코어 수 설정
 
-# Docker 실행 명령어
-# srun docker run --rm -it your_docker_image your_command
-
 echo "SLURM_SUBMIT_DIR=$SLURM_SUBMIT_DIR"
 echo "CUDA_HOME=$CUDA_HOME"
 echo "HOME=$HOME"
 PROJECT_DIR=$HOME/POSTECH-CSED538
 echo "PROJECT_DIR=$PROJECT_DIR"
 
+srun -I /bin/hostname
+srun -I /bin/pwd
+srun -I /bin/date
+
+echo "source $HOME/anaconda3/etc/profile.d/conda.sh"
+source $HOME/anaconda3/etc/profile.d/conda.sh   # add conda to PATH
 
 echo "conda activate ddpm-cd"
 conda activate ddpm-cd
@@ -31,3 +34,8 @@ python $PROJECT_DIR/ddpm_train.py --config $PROJECT_DIR/config/levir.json -enabl
 
 echo "conda deactivate"
 conda deactivate
+
+date
+squeue --job $SLURM_JOBID
+
+echo "### END ###"
